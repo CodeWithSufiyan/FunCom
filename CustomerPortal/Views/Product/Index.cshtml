@@ -1,0 +1,23 @@
+@{
+    Layout = "_Layout";
+}
+
+@model IEnumerable<AdminPortal.Models.ProductModel>
+
+<div class="container">
+  <h2 style="color:Tomato;"><center>Prod</center></h2>
+  
+  <form class="form-inline" action="/action_page.php">
+    <label for="Product Name" class="mb-2 mr-sm-2">Product Name:</label>
+    <input type="text" class="form-control mb-2 mr-sm-2" id="Product Name" placeholder="Enter Product Name" name="Product Name">
+    <br>
+    <label for="pwd2" class="mb-2 mr-sm-2">Password:</label>
+    <input type="text" class="form-control mb-2 mr-sm-2" id="pwd2" placeholder="Enter password" name="pswd">
+    <div class="form-check mb-2 mr-sm-2">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="remember"> Remember me
+      </label>
+    </div>    
+    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  </form>
+</div>

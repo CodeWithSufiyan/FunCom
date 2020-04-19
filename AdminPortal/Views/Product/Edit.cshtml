@@ -1,0 +1,42 @@
+@{
+    Layout = "_Layout";
+}
+
+@model IEnumerable<AdminPortal.Models.ProductModel>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <tbody>
+        <h2 style="color:Tomato;"><center>Product</center></h2>
+        <style>
+            table, th, td {
+            border: 2px solid DodgerBlue;
+            background-color: #F0F8FF;
+                            }
+            th, td {
+            padding: 5px;
+                    }
+            th,td {
+                text-align: center;
+                }
+        </style>
+        <table style="width:100%">
+            
+            <tr>
+                <th>Id</th>
+                <th>ProductCategoryFk</th>
+                <th>Name</th>
+            </tr>
+            @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.ProductCategoryFk</td>
+                        <td>@p.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
