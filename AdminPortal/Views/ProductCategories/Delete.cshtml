@@ -1,23 +1,14 @@
-@{
-    Layout = "_Layout";
-}
 
-@model IEnumerable<AdminPortal.Models.ProductCategoriesModel>
+@model AdminPortal.Models.ProductCategoriesModel;
 
-<div class="row">
-    <div class="col-md-12">
-
-        
-        <table class="table table-sm table-bordered">
-            <tbody>
-                @foreach (var p in Model)
-                {
-                    <tr>
-                        <td>@p.Id</td>
-                        <td>@p.Name</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<div class="container">
+  <h2>ABC</h2>
+  <form action="/ProductCategories/Delete" method="post">
+    <div class="form-group">
+     <input name="Id" value="@Model.Id" hidden>
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter name" name="Name" value="@Model.Name" hidden>
     </div>
-</div>
+    Delete ? Are You sure !
+    <button type="submit" class="btn btn-primary">Yes, delete</button>
+  </form>

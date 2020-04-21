@@ -20,7 +20,7 @@ namespace CustomerPortal.Controllers
 
         public IActionResult Index()
         {
-            {
+            
             List <ProductModel> listOfProducts = new List <ProductModel> ();
             listOfProducts.Add(new ProductModel{
                 Product_Name ="Top",

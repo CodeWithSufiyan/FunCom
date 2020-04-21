@@ -6,9 +6,9 @@
 
 <div class="row">
     <div class="col-md-12">
+        <a href="/ProductCategories/Create">Create product</a>
 
-        <tbody>
-        <h2 style="color:Tomato;"><center>Product Category</center></h2>
+        <h2 style="color:Tomato;"><center>Product Categories</center></h2>
         <style>
             table, th, td {
             border: 2px solid DodgerBlue;
@@ -22,18 +22,22 @@
                 }
         </style>
         <table style="width:100%">
-            
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-            @foreach (var p in Model)
-                {
-                    <tr>
-                        <td>@p.Id</td>
-                        <td>@p.Name</td>
-                    </tr>
-                }
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>@p.Id</td>
+                            <td>@p.Name</td>
+                            <td><a href="/ProductCategories/Edit?Id=@p.Id">edit</a>
+                            <small> &nbsp; | &nbsp;</small>
+                            <a href="/ProductCategories/Delete?Id=@p.Id">delete</a></td>
+                        </tr>
+                    }
             </tbody>
         </table>
     </div>
