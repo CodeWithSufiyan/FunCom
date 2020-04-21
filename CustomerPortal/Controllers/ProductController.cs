@@ -52,7 +52,7 @@ namespace CustomerPortal.Controllers
             listOfProducts.Add(new ProductModel{
                 Product_Name ="Shirt",
                 Brand_Name="Gucci",
-                Package_qty=7,
+                Package_qty=5,
                 Size="Extra Large",
                 Colour="Chex Yellow",
                 Department="Mens"
