@@ -1,13 +1,11 @@
 
 @model AdminPortal.Models.ProductModel;
 
-
-
 <body>
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style> 
@@ -157,6 +155,10 @@ hr {
 
 <div class="container">
   <h2 class="bg-light py-4 text-info"><center><i class="fas fa-trash-alt fa-3x"></i>Delete Product</center></h2>
+  
+    <button onclick="document.getElementById('id01').style.display='block'">Delete</button>
+    <div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
   <form action="/Product/Delete" method="post">
 
     <div class="form-group">
@@ -164,17 +166,13 @@ hr {
         <h3><label for="name ">Name</label></h3>
        <input type="text" name="name" placeholder="Input Name of Product.." value="@Model.Name">
     </div>
-    <button onclick="document.getElementById('id01').style.display='block'">Delete</button>
-    <div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-  
     <div class="container">
       <h1>Delete Account</h1>
       <p>Are you sure you want to delete your account?</p>
-    
+
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
+        <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
       </div>
     </div>
   </form>

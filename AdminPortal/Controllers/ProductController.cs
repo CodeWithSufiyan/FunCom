@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AdminPortal.Models;
 using AdminPortal.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;//TAG
 
 namespace AdminPortal.Controllers
     {
@@ -37,7 +38,14 @@ namespace AdminPortal.Controllers
 
         [HttpGet]
         public IActionResult Create()
-        {
+        {            
+            //TAG
+            // PULLING CATEGORIES FROM DATABASE
+            List<ProductCategoriesModel> dbProdCatg = _applicationDbContext.ProductCategories.ToList();
+            // NOW SOMETHING STRANGE. WE WILL CREATE A CACHE OBJECT AND ASSIGN OUR CATEGORIES
+            // TO IT. IN THE VIEW SIDE, WE WILL RENDER IT                            
+            ViewBag.uiProdCatgList = dbProdCatg; // VIEWBAG IS A TEMP MEMORY. U CAN CALL IT IN UI DIRECTLY
+
             return View();
         }
 

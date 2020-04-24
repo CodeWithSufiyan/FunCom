@@ -79,7 +79,17 @@ button {
   <form action="/Product/Create" method="post">
     <div class="form-group">
       <h3><label for="name ">ProductCategoryFk</label></h3>
-       <input type="text" name="ProductCategoryFk" placeholder="Input ProductCategoryFk..">
+      <!-- ViewBag.uiProdCatg is what we set in controller action 'Create' -->
+       <select name="ProductCategoryFk">
+         <option value="">- select category</option>
+         @{
+            var uiProdCatgList = ViewBag.uiProdCatgList;
+            foreach(var prdctg in uiProdCatgList){
+              <option value="@prdctg.Id">@prdctg.Name</option>
+            }
+         }
+      </select>
+
       <h3><label for="name ">Name</label></h3>
        <input type="text" name="name" placeholder="Input Name of Product..">
     </div>
