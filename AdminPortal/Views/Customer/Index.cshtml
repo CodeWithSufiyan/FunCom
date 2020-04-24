@@ -8,7 +8,7 @@
     <div class="col-md-12">
 
         <tbody>
-        <h2 style="color:Tomato;"><center>Product Category</center></h2>
+        <h2 style="color:Tomato;"><center>ABC</center></h2>
         <style>
             table, th, td {
             border: 2px solid DodgerBlue;
@@ -24,16 +24,22 @@
         <table style="width:100%">
             
             <tr>
+                <th>Id</th>
                 <th>ProductCategory</th>
                 <th>Conditions_Allowed</th>
                 <th>Approval_Required</th>
+                <th>Actions</th>
             </tr>
             @foreach (var p in Model)
                 {
                     <tr>
+                        <td>@p.Id</td>
                         <td>@p.ProductCategory</td>
                         <td>@p.Conditions_Allowed</td>
                         <td>@p.Approval_Required</td>
+                        <td><a href="/Customer/Edit?Id=@p.Id">Edit</a>
+                            <small> &nbsp; | &nbsp;</small>
+                            <a href="/Customer/Delete?Id=@p.Id">Delete</a></td>
                     </tr>
                 }
             </tbody>

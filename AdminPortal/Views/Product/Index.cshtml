@@ -4,15 +4,18 @@
 
 @model IEnumerable<AdminPortal.Models.ProductModel>
 
-<div class="row">
-    <div class="col-md-12">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  </head>
 
-        <tbody>
-        <h2 style="color:Tomato;"><center>Product</center></h2>
-        <style>
+  <h2 class="bg-light py-4 text-info"><center><i class="fa fa-leaf fa-3x"></i>Products</center></h2>
+        
+    <style>
             table, th, td {
             border: 2px solid DodgerBlue;
             background-color: #F0F8FF;
+            font-size: 28px;
                             }
             th, td {
             padding: 5px;
@@ -20,13 +23,50 @@
             th,td {
                 text-align: center;
                 }
-        </style>
-        <table style="width:100%">
-            
+                .button {
+                position: relative;
+                background-color: #4CAF50;
+                border: none;
+                font-size: 28px;
+                color: #FFFFFF;
+                padding: 20px;
+                width: 200px;
+                text-align: center;
+                -webkit-transition-duration: 0.4s; /* Safari */
+                transition-duration: 0.4s;
+                text-decoration: none;
+                overflow: hidden;
+                cursor: pointer;
+              }
+
+              .button:after {
+                content: "";
+                background: #90EE90;
+                display: block;
+                position: absolute;
+                padding-top: 300%;
+                padding-left: 350%;
+                margin-left: -20px!important;
+                margin-top: -120%;
+                opacity: 0;
+                transition: all 0.8s
+              }
+
+              .button:active:after {
+                padding: 0;
+                margin: 0;
+                opacity: 1;
+                transition: 0s
+              }
+                </style>
+                
+                <table style="width:100%">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <th>ProductCategoryFk</th>
                 <th>Name</th>
+                <th>Actions</th>
             </tr>
             @foreach (var p in Model)
                 {
@@ -34,7 +74,14 @@
                         <td>@p.Id</td>
                         <td>@p.ProductCategoryFk</td>
                         <td>@p.Name</td>
-                    </tr>
+                        <td>
+            <a href="/Product/Create?Id=@p.Id" class="btn btn-success btn-lg text-white justify-content-center"><i class="fas fa-plus-circle"></i>Create</a>
+            <small> &nbsp; | &nbsp;</small>
+            <a href="/Product/Edit?Id=@p.Id" class="btn btn-warning btn-lg text-white justify-content-center"><i class="fas fa-edit"></i>Edit</a>
+            <small> &nbsp; | &nbsp;</small>
+            <a href="/Product/Delete?Id=@p.Id" class="btn btn-danger btn-lg text-white justify-content-center"><i class="fas fa-trash-alt">Delete</a></td>
+      
+                        </tr>
                 }
             </tbody>
         </table>

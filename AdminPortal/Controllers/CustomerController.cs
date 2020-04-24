@@ -6,17 +6,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AdminPortal.Models;
-
+using AdminPortal.Data;
 
 
 namespace AdminPortal.Controllers
 {
     public class CustomerController : Controller
     {
+        // DB instance
+        private readonly ApplicationDbContext  _applicationDbContext;
         private readonly ILogger<HomeController> _logger;
 
-        public CustomerController(ILogger<HomeController> logger)
+        public CustomerController(
+            ILogger<HomeController> logger,
+            ApplicationDbContext  applicationDbContext)
         {
+            _applicationDbContext = applicationDbContext;
             _logger = logger;
         }
 
@@ -26,80 +31,55 @@ namespace AdminPortal.Controllers
         //Delete
         public IActionResult Index()
         {
-            List <CustomerModel> listOfProducts = new List <CustomerModel> ();
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Amazon Device Accessories",
-                Conditions_Allowed = "New, Certified refurbished, Used",
-                Approval_Required ="No"
-
-            });
-
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Baby Products (excluding apparel)",
-                Conditions_Allowed = "New",
-                Approval_Required ="No, but certain sub-categories require approval."
-
-            });
-
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Beauty",
-                Conditions_Allowed = "New",
-                Approval_Required ="No"
-
-            });
-
-
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Cell Phones & Accessories",
-                Conditions_Allowed = "New, Used, Certified refurbished; Unlocked",
-                Approval_Required ="No"
-
-            });
-
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Office Products",
-                Conditions_Allowed = "New, Certified refurbished, Used, Collectible",
-                Approval_Required ="No, but certain sub-categories require approval."
-
-            });
-
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Pet Supplies",
-                Conditions_Allowed = "New, Certified refurbished, Used",
-                Approval_Required ="No, but certain sub-categories require approval."
-
-            });
-
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Toys & Games",
-                Conditions_Allowed = "New, Collectible",
-                Approval_Required ="No, but certain sub-categories require approval. Approval may be required to sell during the winter holiday season."
-
-            });
-
-            listOfProducts.Add(new CustomerModel{
-                ProductCategory = "Watches",
-                Conditions_Allowed = "New",
-                Approval_Required ="Yes"
-
-            });
-
-            return View(listOfProducts);
+            List <CustomerModel> listOfProducts = _applicationDbContext.Customers.ToList();
+            return View("Index", listOfProducts);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        public IActionResult Edit()
+        [HttpPost]
+        public IActionResult Create(CustomerModel m)
         {
-            return View();
+            _applicationDbContext.Customers.Add(m);
+            _applicationDbContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Edit(long Id)
         {
-            return View();
+            CustomerModel prdtct = _applicationDbContext.Customers.FirstOrDefault(o => o.Id == Id);
+            return View(prdtct);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(CustomerModel m)
+        {
+            _applicationDbContext.Customers.Update(m);
+            _applicationDbContext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(long Id)
+        {
+            CustomerModel prdtct = _applicationDbContext.Customers.FirstOrDefault(o => o.Id == Id);
+            return View(prdtct);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(CustomerModel m)
+        {
+            _applicationDbContext.Customers.Remove(m);
+            _applicationDbContext.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
