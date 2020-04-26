@@ -107,15 +107,15 @@ button:hover {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: #474e5d;
-  padding-top: 50px;
+  background-color: #6d8dd1;
+  padding-top: 100px;
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
+  border: 3px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
@@ -129,7 +129,7 @@ hr {
 .close {
   position: absolute;
   right: 35px;
-  top: 15px;
+  top: 30px;
   font-size: 40px;
   font-weight: bold;
   color: #f1f1f1;
@@ -158,17 +158,17 @@ hr {
   
     <button onclick="document.getElementById('id01').style.display='block'">Delete</button>
     <div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"><i class="fa fa-times-circle" aria-hidden="true"></i>Close</span>
   <form action="/Product/Delete" method="post">
 
     <div class="form-group">
       <input name="Id" value="@Model.Id" hidden>
-        <h3><label for="name ">Name</label></h3>
+        <h3><label for="name "><h2>Name of Product</h2></label></h3>
        <input type="text" name="name" placeholder="Input Name of Product.." value="@Model.Name">
     </div>
     <div class="container">
-      <h1>Delete Account</h1>
-      <p>Are you sure you want to delete your account?</p>
+      <h1>Delete Product</h1>
+      <p><h3>Are you sure you want to delete this Product?</h3></p>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
