@@ -149,18 +149,36 @@ button {
 <div class="container">
   <h2 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle fa-3x"></i>Add Products</center></h2>
   <form action="/Customer/Create" method="post">
-    
-    
-    <h2>Product_Category</h2>
-    <div class="custom-control custom-checkbox mb-3">
-      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-      <label class="custom-control-label" for="customCheck">Product_Category</label>
-    </div>
+    <div class="form-group">
 
-
+      <form>
+        <h3>Product Category:</h3>
+  <select name="Product Category" class="custom-select">
+    <option selected><h3>Select Product Category</h3></option>
+    <option value="Amazon Device Accessories">Amazon Device Accessories</option>
+    <option value="Baby Products">Baby Products</option>
+    <option value="Cell Phones">Cell Phones</option>
+    <option value="Furniture">Furniture</option>
+    <option value="Pet Supplies">Pet Supplies</option>
+    <option value="Toys And Games">Toys And Games</option>
+    <option value="Watches">Watches</option>
+    
+  </select>
+</form>
+    <h4>Conditions Allowed</h4>
+    <input type="checkbox" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label><br><br>
+  <input type="submit" value="Submit">
+</form>
+    <br>
+    <br>
     <button type="submit" class="btn btn-primary">Save</button>
-    
-  </form>
   </body>
 </html>
+
+
 
