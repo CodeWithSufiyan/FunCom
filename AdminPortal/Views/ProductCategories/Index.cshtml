@@ -10,7 +10,8 @@
   </head>
 
       <h2 class="bg-light py-4 text-info"><center><i class="fas fa-shopping-bag fa-3x"></i>Product Categories</center></h2>
-        
+        <a href="/ProductCategories/Create" class="btn btn-success btn-lg text-white justify-content-center"><i class="fas fa-plus-circle"></i>Create</a>
+            
         <style>
           table, th, td {
             border: 2px solid DodgerBlue;
@@ -73,7 +74,6 @@
         <td>@p.Id</td>
         <td>@p.Name</td>
          <td>
-            <a href="/ProductCategories/Create?Id=@p.Id" class="btn btn-success btn-lg text-white justify-content-center"><i class="fas fa-plus-circle"></i>Create</a>
             <small> &nbsp; | &nbsp;</small>
             <a href="/ProductCategories/Edit?Id=@p.Id" class="btn btn-warning btn-lg text-white justify-content-center"><i class="fas fa-edit"></i>Edit</a>
             <small> &nbsp; | &nbsp;</small>

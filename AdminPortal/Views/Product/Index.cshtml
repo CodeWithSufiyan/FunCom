@@ -66,21 +66,67 @@
     <div class="col-md-12">
       <h2 class="bg-light py-4 text-info"><center><i class="fa fa-leaf fa-3x"></i>Products</center></h2>
 
-      <a href="/Product/Create" class="btn btn-primary btn-outline-primary mb-10">Create</a>
+      <a href="/Product/Create" class="btn btn-success btn-lg text-white justify-content-center"><i class="fas fa-plus-circle"></i>Create</a>
       <table style="width:100%">
           <tbody>
               <tr>
                   <th>Id</th>
-                  <th>ProductCategoryFk</th>
-                  <th>Name</th>
+                  <th>SKU</th>
+                  <th>IdSKU</th>
+                  <th>Vendor_ProductID</th>
+                  <th>Product_Name</th>
+                  <th>Product_Description</th>
+                  <th>SupplierID</th>
+                  <th>CategoryID</th>
+                  <th>Quantity_Per_Unit</th>
+                  <th>Unit_Price</th>
+                  <th>MSRP</th>
+                  <th>Availale_Size</th>
+                  <th>Available_Colors</th>
+                  <th>Size</th>
+                  <th>Colors</th>
+                  <th>Discount</th>
+                  <th>Unit_Weight</th>
+                  <th>Units_in_Stock</th>
+                  <th>Units_On_Order</th>
+                  <th>Reorder_Level</th>
+                  <th>Product_Available</th>
+                  <th>Discount_Available</th>
+                  <th>Current_Order</th>
+                  <th>Picture</th>
+                  <th>Ranking</th>
+                  <th>Note</th>
                   <th>Actions</th>
               </tr>
               @foreach (var p in Model)
               {
                   <tr>
                       <td>@p.Id</td>
-                      <td>@p.ProductCategoryFk</td>
-                      <td>@p.Name</td>
+                      <td>@p.SKU</td>
+                      <td>@p.IdSKU</td>
+                      <td>@p.Vendor_ProductID</td>
+                      <td>@p.Product_Name</td>
+                      <td>@p.Product_Description</td>
+                      <td>@p.SupplierID</td>
+                      <td>@p.CategoryID</td>
+                      <td>@p.Quantity_Per_Unit</td>
+                      <td>@p.Unit_Price</td>
+                      <td>@p.MSRP</td>
+                      <td>@p.Availale_Size</td>
+                      <td>@p.Available_Colors</td>
+                      <td>@p.Size</td>
+                      <td>@p.Colors</td>
+                      <td>@p.Discount</td>
+                      <td>@p.Unit_Weight</td>
+                      <td>@p.Units_in_Stock</td>
+                      <td>@p.Units_On_Order</td>
+                      <td>@p.Reorder_Level</td>
+                      <td>@p.Product_Available</td>
+                      <td>@p.Discount_Available</td>
+                      <td>@p.Current_Order</td>
+                      <td>@p.Picture</td>
+                      <td>@p.Ranking</td>
+                      <td>@p.Note</td>
                       <td>
                           <a href="/Product/Edit?Id=@p.Id" class="btn btn-warning btn-lg text-white justify-content-center"><i class="fas fa-edit"></i>Edit</a>
                           <small> &nbsp; | &nbsp;</small>

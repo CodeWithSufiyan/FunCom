@@ -1,184 +1,210 @@
-<body>
-<html>
 
-<head>
+<html>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <style> 
-input[type=text] {
-  width: 250px;
+* {
   box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 28px;
-  background-color: white;
-  background-image: url('searchicon.png');
-  background-position: 10px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
 }
 
-input[type=text]:focus {
+body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
   width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
 }
 
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-  font-size: 28px;
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
 }
 
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 28px;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-  font-size: 28px;
-}
-
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-button {
-  font-size: 28px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-/* The container */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
+/* Hide all steps by default: */
+.tab {
   display: none;
 }
 
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
 }
 
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
 }
 </style>
-</head>
+<body>
 
-<div class="container">
-  <h2 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle fa-3x"></i>Add Products</center></h2>
-  <form action="/Customer/Create" method="post">
-    <div class="form-group">
+<form id="regForm" action="/action_page.php">
+  <h2 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle fa-3x"></i>Customers's Information:</center></h2>
+  <form action="/Customer/Create" method="post"></form>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">Customers's Name:
+    <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+    <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+  </div>
+  <div class="tab">Birthday:
+    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+    <p><input placeholder="Age" oninput="this.className = ''" name="Age"></p>
+    </div>
+    <div class="tab">
+      <p>Please select your gender:</p>
+  <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label><br>
+  <input type="radio" id="other" name="gender" value="other">
+  <label for="other">Other</label>
+  
+  </div>
+  <div class="tab">Contact Info:
+    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+  </div>
+  
+  <div class="tab">Login Info:
+    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+  </div>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:30px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
 
-      <form>
-        <h3>Product Category:</h3>
-  <select name="Product Category" class="custom-select">
-    <option selected><h3>Select Product Category</h3></option>
-    <option value="Amazon Device Accessories">Amazon Device Accessories</option>
-    <option value="Baby Products">Baby Products</option>
-    <option value="Cell Phones">Cell Phones</option>
-    <option value="Furniture">Furniture</option>
-    <option value="Pet Supplies">Pet Supplies</option>
-    <option value="Toys And Games">Toys And Games</option>
-    <option value="Watches">Watches</option>
-    
-  </select>
-</form>
-    <h4>Conditions Allowed</h4>
-    <input type="checkbox" name="vehicle1" value="Bike">
-  <label for="vehicle1"> I have a bike</label><br>
-  <input type="checkbox" name="vehicle2" value="Car">
-  <label for="vehicle2"> I have a car</label><br>
-  <input type="checkbox" name="vehicle3" value="Boat">
-  <label for="vehicle3"> I have a boat</label><br><br>
-  <input type="submit" value="Submit">
-</form>
-    <br>
-    <br>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </body>
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+
+</body>
 </html>
-
-
-
