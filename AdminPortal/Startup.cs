@@ -33,7 +33,7 @@ namespace AdminPortal
                 // Package name : Microsoft.EntityFrameworkCore.Proxies
                 options.UseLazyLoadingProxies();
                 options.UseSqlServer(
-                    "Server=(localdb)\\mssqllocaldb;Database=FunCom;Trusted_Connection=True;MultipleActiveResultSets=true"
+                    "Server=(localdb)\\mssqllocaldb;Database=FunCom2;Trusted_Connection=True;MultipleActiveResultSets=true"
                 );
             });
         }

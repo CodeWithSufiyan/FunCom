@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminPortal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200503155140_edit_ProductModel_2")]
-    partial class edit_ProductModel_2
+    [Migration("20200503170653_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,8 +75,8 @@ namespace AdminPortal.Migrations
                     b.Property<string>("Availale_Size")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<long>("CategoryID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Colors")
                         .HasColumnType("nvarchar(max)");
@@ -146,7 +146,18 @@ namespace AdminPortal.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("AdminPortal.Models.ProductModel", b =>
+                {
+                    b.HasOne("AdminPortal.Models.ProductCategoriesModel", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

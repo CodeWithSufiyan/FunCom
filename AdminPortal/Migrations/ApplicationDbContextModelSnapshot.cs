@@ -73,8 +73,8 @@ namespace AdminPortal.Migrations
                     b.Property<string>("Availale_Size")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<long>("CategoryID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Colors")
                         .HasColumnType("nvarchar(max)");
@@ -144,7 +144,18 @@ namespace AdminPortal.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("AdminPortal.Models.ProductModel", b =>
+                {
+                    b.HasOne("AdminPortal.Models.ProductCategoriesModel", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

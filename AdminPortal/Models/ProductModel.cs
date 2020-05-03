@@ -1,17 +1,27 @@
 using System;
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AdminPortal.Models
 {
     public class ProductModel
     {
         public int Id { get; set; }
+
+        // --------------CREATES A SQL FOREIGN KEY RELATION WITH CATEGORYMODEL
+        // --------------PRODUCTCATEGORY -> PARENT 
+        // 1 Product has 1 Category only
+        [ForeignKey("Category")]
+        public long CategoryID { get; set; }
+        public virtual ProductCategoriesModel Category{get;set;}
+        // ---------------------------------------------------
+
         public string SKU { get; set; }
         public int IdSKU { get; set; }
         public string Vendor_ProductID { get; set; }
         public string Product_Name { get; set; }
         public string Product_Description { get; set; }
         public int SupplierID { get; set; }
-        public int CategoryID { get; set; }
         public int Quantity_Per_Unit { get; set; }
         public int Unit_Price { get; set; }
         public int MSRP { get; set; }
