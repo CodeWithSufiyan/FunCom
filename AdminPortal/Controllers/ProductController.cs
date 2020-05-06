@@ -52,10 +52,32 @@ namespace AdminPortal.Controllers
         [HttpPost]
         public IActionResult Create(ProductModel m)
         {
-            _applicationDbContext.Products.Add(m);
-            _applicationDbContext.SaveChanges();
+            // To avoid throwing error . Try something & catch error block
+            try{
+                // ModelState is state of ProductModel m
+                if(!ModelState.IsValid){
+                    var errorList = ModelState.ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(o => o.ErrorMessage).ToArray()
+                    );
+                    ViewBag.Errors = errorList;
+                    List<ProductCategoriesModel> dbProdCatg = _applicationDbContext.ProductCategories.ToList();
+                              
+                    ViewBag.uiProdCatgList = dbProdCatg; 
+                    return View();
+                }
+                _applicationDbContext.Products.Add(m);
+                _applicationDbContext.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex){
+                ViewBag.ExceptionErrorMessage = ex.InnerException.Message;
+                List<ProductCategoriesModel> dbProdCatg = _applicationDbContext.ProductCategories.ToList();
+                            
+                ViewBag.uiProdCatgList = dbProdCatg; 
+                return View();
+            }
         }
 
         [HttpGet]

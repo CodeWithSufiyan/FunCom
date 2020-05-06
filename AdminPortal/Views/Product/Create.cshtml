@@ -1,33 +1,29 @@
-<body>
-<html>
-
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- HTML, BODY Tag etc are already in _Layout.cshtml -->
+<link href="~/lib/fontawesome/css/all.min.css" crossorigin="anonymous">
 <style> 
-input[type=text] {
+input[type=text],input[type=number] {
   width: 250px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-  font-size: 28px;
+  font-size: 20px;
   background-color: white;
   background-image: url('searchicon.png');
   background-position: 10px 10px; 
   background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
+  padding: 10px 10px 10px 40px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
 
-input[type=text]:focus {
+input[type=text],input[type=number]:focus {
   width: 100%;
 }
 
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-input[type=text], select, textarea {
+input[type=text],input[type=number], select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -36,7 +32,7 @@ input[type=text], select, textarea {
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 input[type=submit] {
@@ -46,12 +42,12 @@ input[type=submit] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 input[type=submit]:hover {
   background-color: #45a049;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .container {
@@ -61,7 +57,7 @@ input[type=submit]:hover {
 }
 
 button {
-  font-size: 28px;
+  font-size: 20px;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -79,118 +75,156 @@ hr.new1 {
   color: orange;
 }
 </style>
-</head>
+@if(ViewBag.Errors!=null){
+  <span style="color:red">Error-
+    @foreach (var errorObj in ViewBag.Errors)
+    {
+        <span>@errorObj.ToString()</span>
+        <br>
+        @foreach (var errorMessage in errorObj.Value)
+        {
+            <span>@errorMessage.ToString()</span>
+        }
+        <br><hr>
+    }
+  </span>
+}
+@if(ViewBag.ExceptionErrorMessage!=null){
+  <span style="color:red">Error- @ViewBag.ExceptionErrorMessage
+  </span>
+}
  <hr class="new1">
 <div class="container" style="color:blue">
   <h2 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle fa-3x"></i>Add Product</center></h2>
   
       <hr class="new1">
       <form action="/Product/Create" method="post">
-    <div class="form-group">
+           
+          <h3><label for="Title">CategoryID:<span style="color:red">*</span></label></h3>
+          <a href="/ProductCategories/Create" target="_blank">Add new category</a>
+          <select name="CategoryID">
+              <option value="">- select category</option>
+              @foreach(var prodcat in ViewBag.uiProdCatgList){
+                <option value="@prodcat.Id">@prodcat.Name</option>
+              }
+          </select>
+
+          <h3><label for="Title">SKU:</label></h3>
+          <input type="text" id="name" name="SKU" placeholder="Stock Keeping Unit..">
+          <h3><label for="Title">IDSKU(number):</label></h3>
+          <input type="number" id="name" name="IDSKU" placeholder="Stock Keeping Unit ID..">
+          <h3><label for="Title">Vendor Product ID:</label></h3>
+          <input type="text" id="name" name="IDSKU" placeholder="">
+          <h3><label for="Title">Title:</label></h3>
+          <input type="text" id="name" name="Product Name" placeholder="Product Name..">
+          <h3><label for="subject">Product Description:</label></h3>
+          <textarea id="subject" name="subject" placeholder="Write Details of Product.." style="height:200px"></textarea>
+          <h3><label for="Title">SupplierID(number):</label></h3>
+          <input type="number" id="name" name="SupplierID" placeholder="">
+
+          <h3><label for="Quantity">Quantity_Per_Unit:</label></h3>
+          <select id="Quantity" name="Quantity">
+            <option value="">None</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <h3><label for="Title">Unit_Price(number):</label></h3>
+              <input type="number" id="name" name="Unit_Price" placeholder="">
+              <h3><label for="Title">MSRP:</label></h3>
+              <input type="number" id="name" name="MSRP" placeholder="'Manufacturer's Suggested Retail Price'">
+              <h3><label for="Size">Available Size:</label>
+          </h3>
+          <select id="Size">
+            <option value="">None</option>
+            <option value="XXS=32">XXS=32</option>
+            <option value="XS=34">XS=34</option>
+            <option value="S=36">S=36</option>
+            <option value="M=38">M=38</option>
+            <option value="L=40">L=40</option>
+            <option value="XL=42">XL=42</option>
+            <option value="XXL=44">XXL=44</option>
+            <option value="XXXL=46">XXXL=46</option>
+          </select>
+
+
+          <h3><label for="Colours">Choose a Colour:</label></h3>
+          <h4>(ctrl+select = to select more than 1 Colour)</h4>
+          <select id="Colours" name="Colours" multiple>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Multi-Colour">Multi-Colour</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Orange">Orange</option>
+            <option value="Pink">Pink</option>
+            <option value="Green">Green</option>
+            <option value="Grey">Grey</option>
+            <option value="Brown">Brown</option>
+            <option value="Cream">Cream</option>
+            <option value="Navy Blue">Navy Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Beige">Beige</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Peach">Peach</option>
+            <option value="Other Colours">Other Colours</option>
+
+          </select>
+
+            <h3><label for="Discount">Discount(number):</label></h3>
+            <input type="number" id="name" name="Discount" placeholder="">
+            <h3><label for="Unit_Weight">Unit_Weight(number):</label></h3>
+            <input type="number" id="name" name="Unit_Weight" placeholder="">
+            <h3><label for="Units_in_Stock">Units_in_Stock(number):</label></h3>
+            <input type="number" id="name" name="Units_in_Stock" placeholder="">
+            <h3><label for="Units_On_Order">Units_On_Order(number):</label></h3>
+            <input type="number" id="name" name="Units_On_Order" placeholder="">
+            <h3><label for="Reorder_Level">Reorder_Level:</label></h3>
+            <input type="text" id="name" name="Reorder_Level" placeholder="">
+            <h3><label for="Product_Available">Product_Available:</label></h3>
+            <input type="text" id="name" name="Product_Available" placeholder="">
+            <h3><label for="Discount_Available">Discount_Available(number):</label></h3>
+            <input type="number" id="name" name="Discount_Available" placeholder="">
+            <h3><label for="Current Order">Current Order:</label></h3>
+            <input type="text" id="name" name="Current Order" placeholder="">
+
+            <h3>Select image to upload:</h3>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit">
+
+            <h2>Star Rating</h2>
+            <span class="fa fa-star fa-3x star-rating index-1" data-index="1"></span>
+            <span class="fa fa-star fa-3x star-rating index-2" data-index="2"></span>
+            <span class="fa fa-star fa-3x star-rating index-3" data-index="3"></span>
+            <span class="fa fa-star fa-3x star-rating index-4" data-index="4"></span>
+            <span class="fa fa-star fa-3x star-rating index-5" data-index="5"></span>
       
-    <h3><label for="Title">SKU:</label></h3>
-    <input type="text" id="name" name="SKU" placeholder="Stock Keeping Unit..">
-    <h3><label for="Title">IDSKU:</label></h3>
-    <input type="text" id="name" name="IDSKU" placeholder="Stock Keeping Unit ID..">
-    <h3><label for="Title">Vendor Product ID:</label></h3>
-    <input type="text" id="name" name="IDSKU" placeholder="">
-    <h3><label for="Title">Title:</label></h3>
-    <input type="text" id="name" name="Product Name" placeholder="Product Name..">
-    <h3><label for="subject">Product Description:</label></h3>
-    <textarea id="subject" name="subject" placeholder="Write Details of Product.." style="height:200px"></textarea>
-    <h3><label for="Title">SupplierID:</label></h3>
-    <input type="text" id="name" name="SupplierID" placeholder="">
-    <h3><label for="Title">CategoryID:</label></h3>
-    <input type="text" id="name" name="CategoryID" placeholder="">
+            <h3><button type="submit" class="btn btn-primary">Save</button></h3>
 
-    <h3><label for="Quantity">Quantity_Per_Unit:</label></h3>
-<select id="Quantity" required>
-  <option value="">None</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-</select>
-<h3><label for="Title">Unit_Price:</label></h3>
-    <input type="text" id="name" name="Unit_Price" placeholder="">
-    <h3><label for="Title">MSRP:</label></h3>
-    <input type="text" id="name" name="MSRP" placeholder="'Manufacturer's Suggested Retail Price'">
-    <h3><label for="Size">Available Size:</label></h3>
-<select id="Size" required>
-  <option value="">None</option>
-  <option value="">XXS=32</option>
-  <option value="XS=34">XS=34</option>
-  <option value="S=36">S=36</option>
-  <option value="M=38">M=38</option>
-  <option value="L=40">L=40</option>
-  <option value="XL=42">XL=42</option>
-  <option value="XXL=44">XXL=44</option>
-  <option value="XXXL=46">XXXL=46</option>
-</select>
+        </form>
 
 
-<h3><label for="Colours">Choose a Colour:</label></h3>
-<h4>(ctrl+select = to select more than 1 Colour)</h4>
-<select id="Colours" name="Colours" multiple>
-  <option value="White">White</option>
-  <option value="Black">Black</option>
-  <option value="Multi-Colour">Multi-Colour</option>
-  <option value="Yellow">Yellow</option>
-  <option value="Red">Red</option>
-  <option value="Blue">Blue</option>
-  <option value="Orange">Orange</option>
-  <option value="Pink">Pink</option>
-  <option value="Green">Green</option>
-  <option value="Grey">Grey</option>
-  <option value="Brown">Brown</option>
-  <option value="Cream">Cream</option>
-  <option value="Navy Blue">Navy Blue</option>
-  <option value="Purple">Purple</option>
-  <option value="Beige">Beige</option>
-  <option value="Maroon">Maroon</option>
-  <option value="Peach">Peach</option>
-  <option value="Other Colours">Other Colours</option>
+</div>
 
-</select>
+@section Scripts{
+  <script src="~/lib/fontawesome/js/all.min.js"></script>
+  <script>
+    $(function(){
+      $(document).on('click', '.star-rating', function(){
+        let index= $(this).data('index');
 
-
-    
-    <h3><label for="Discount">Discount:</label></h3>
-    <input type="text" id="name" name="Discount" placeholder="">
-    <h3><label for="Unit_Weight">Unit_Weight:</label></h3>
-    <input type="text" id="name" name="Unit_Weight" placeholder="">
-    <h3><label for="Units_in_Stock">Units_in_Stock:</label></h3>
-    <input type="text" id="name" name="Units_in_Stock" placeholder="">
-    <h3><label for="Units_On_Order">Units_On_Order:</label></h3>
-    <input type="text" id="name" name="Units_On_Order" placeholder="">
-    <h3><label for="Reorder_Level">Reorder_Level:</label></h3>
-    <input type="text" id="name" name="Reorder_Level" placeholder="">
-    <h3><label for="Product_Available">Product_Available:</label></h3>
-    <input type="text" id="name" name="Product_Available" placeholder="">
-    <h3><label for="Discount_Available">Discount_Available:</label></h3>
-    <input type="text" id="name" name="Discount_Available" placeholder="">
-     <h3><label for="Current Order">Current Order:</label></h3>
-    <input type="text" id="name" name="Current Order" placeholder="">
-
-    <h3>Select image to upload:</h3>
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-
-    <h2>Star Rating</h2>
-<span class="fa fa-star fa-3x checked"></span>
-<span class="fa fa-star fa-3x checked"></span>
-<span class="fa fa-star fa-3x checked"></span>
-<span class="fa fa-star fa-3x"></span>
-<span class="fa fa-star fa-3x"></span>
-
-
-
-
-
-      
-    <h3><button type="submit" class="btn btn-primary">Save</button></h3>
-    
-  </form>
-  </body>
-</html>
-
+        let lengthOfStars=$('.star-rating').length;
+        let mainLength = lengthOfStars-(lengthOfStars-index);
+        let remainingLength = lengthOfStars-mainLength;
+        for(var i=0; i<mainLength; i++){
+          $('.star-rating[data-index="'+(i+1)+'"]').addClass('checked');
+        }
+        for(var j=0; j<remainingLength; j++,i++){
+          $('.star-rating[data-index="'+(i+1)+'"]').removeClass('checked');
+        }
+      });
+    });
+  </script>
+}
