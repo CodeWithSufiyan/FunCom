@@ -66,6 +66,9 @@
       <tr>
         <th>Id</th>
           <th>Name</th>
+          <th>Description</th>
+          <th>Picture</th>
+          <th>Active</th>
           <th>Actions</th>
       </tr>
 @foreach (var p in Model)
@@ -73,6 +76,9 @@
       <tr>
         <td>@p.Id</td>
         <td>@p.Name</td>
+        <td>@p.Description</td>
+        <td>@p.Picture</td>
+        <td>@p.Active</td>
          <td>
             <small> &nbsp; | &nbsp;</small>
             <a href="/ProductCategories/Edit?Id=@p.Id" class="btn btn-warning btn-lg text-white justify-content-center"><i class="fas fa-edit"></i>Edit</a>

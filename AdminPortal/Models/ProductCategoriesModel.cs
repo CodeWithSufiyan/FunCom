@@ -24,5 +24,8 @@ namespace AdminPortal.Models
         // 1 Category has multiple Products(childs)
         public virtual ICollection<ProductModel> Products { get; set; }
         // ------------------------------------
+        public string Description { get; set; }
+        public string Picture { get; set; }
+        public string Active { get; set; }
     }
 }
