@@ -53,7 +53,7 @@ namespace AdminPortal.Controllers
         [HttpGet]
         public IActionResult Edit(long Id)
         {
-            CustomerModel prdtct = _applicationDbContext.Customers.FirstOrDefault(o => o.Customer_Id == Id);
+            CustomerModel prdtct = _applicationDbContext.Customers.FirstOrDefault(o => o.Id == Id);
             return View(prdtct);
         }
 
@@ -69,7 +69,7 @@ namespace AdminPortal.Controllers
         [HttpGet]
         public IActionResult Delete(long Id)
         {
-            CustomerModel prdtct = _applicationDbContext.Customers.FirstOrDefault(o => o.Customer_Id == Id);
+            CustomerModel prdtct = _applicationDbContext.Customers.FirstOrDefault(o => o.Id == Id);
             return View(prdtct);
         }
 

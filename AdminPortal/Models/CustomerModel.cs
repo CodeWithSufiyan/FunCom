@@ -4,7 +4,8 @@ namespace AdminPortal.Models
 {
     public class CustomerModel
     {
-        public long Customer_Id { get; set; }
+        
+        public long Id { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
         public string Class { get; set; }
