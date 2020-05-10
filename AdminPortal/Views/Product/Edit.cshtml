@@ -1,167 +1,164 @@
 @model AdminPortal.Models.ProductModel;
 
-<body>
-<html>
-
 <head>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<style> 
-input[type=text] {
-  width: 250px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 28px;
-  background-color: white;
-  background-image: url('searchicon.png');
-  background-position: 10px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-}
+    <style> 
+      input[type=text] {
+      width: 250px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 28px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px; 
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+      }
 
-input[type=text]:focus {
-  width: 100%;
-}
+      input[type=text]:focus {
+        width: 100%;
+      }
 
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
+      body {font-family: Arial, Helvetica, sans-serif;}
+      * {box-sizing: border-box;}
 
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-  font-size: 28px;
-}
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+        font-size: 28px;
+      }
 
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 28px;
-}
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 28px;
+      }
 
-input[type=submit]:hover {
-  background-color: #45a049;
-  font-size: 28px;
-}
+      input[type=submit]:hover {
+        background-color: #45a049;
+        font-size: 28px;
+      }
 
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
 
-button {
-  font-size: 28px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-</style>
+      button {
+        font-size: 28px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+    </style>
 </head>
+
 <div class="container">
   <h2 class="bg-light py-4 text-info"><center><i class="fas fa-edit fa-3x"></i>Edit Product Category</center></h2>
-  <form action="/Product/Edit" method="post">
-    <div class="form-group">
-      <input name="Id" value="@Model.Id" hidden>
-      <h3><label for="name ">SKU</label></h3>
-       <input type="text" name="SKU" placeholder="Input SKU.." value="@Model.SKU">
-      <h3><label for="name ">IdSKU</label></h3>
-       <input type="text" name="IdSKU" placeholder="Input IdSKU.." value="@Model.IdSKU">
+    <form action="/Product/Edit" method="post">
+      <div class="form-group">
+        <input name="Id" value="@Model.Id" hidden>
+        <h3><label for="name ">SKU</label></h3>
+        <input type="text" name="SKU" placeholder="Input SKU.." value="@Model.SKU">
+        <h3><label for="name ">IdSKU</label></h3>
+        <input type="text" name="IdSKU" placeholder="Input IdSKU.." value="@Model.IdSKU">
 
-       <h3><label for="name ">Vendor_ProductID</label></h3>
-       <input type="text" name="Vendor_ProductID" placeholder="Input Vendor_ProductID.." value="@Model.Vendor_ProductID">
+        <h3><label for="name ">Vendor_ProductID</label></h3>
+        <input type="text" name="Vendor_ProductID" placeholder="Input Vendor_ProductID.." value="@Model.Vendor_ProductID">
 
-       <h3><label for="name ">Product_Name</label></h3>
-       <input type="text" name="Product_Name" placeholder="Input Product_Name.." value="@Model.Product_Name">
+        <h3><label for="name ">Product_Name</label></h3>
+        <input type="text" name="Product_Name" placeholder="Input Product_Name.." value="@Model.Product_Name">
 
-       <h3><label for="name ">Product_Description</label></h3>
-       <input type="text" name="Product_Description" placeholder="Input Product_Description.." value="@Model.Product_Description">
+        <h3><label for="name ">Product_Description</label></h3>
+        <input type="text" name="Product_Description" placeholder="Input Product_Description.." value="@Model.Product_Description">
 
         <h3><label for="name ">SupplierID</label></h3>
-       <input type="text" name="SupplierID" placeholder="Input SupplierID.." value="@Model.SupplierID">
+        <input type="text" name="SupplierID" placeholder="Input SupplierID.." value="@Model.SupplierID">
 
-       <h3><label for="name ">CategoryID</label></h3>
-       <input type="text" name="CategoryID" placeholder="Input CategoryID.." value="@Model.CategoryID">
+        <h3><label for="name ">CategoryID</label></h3>
+        <input type="text" name="CategoryID" placeholder="Input CategoryID.." value="@Model.CategoryID">
 
-       <h3><label for="name ">Quantity_Per_Unit</label></h3>
-       <input type="text" name="Quantity_Per_Unit" placeholder="Input Quantity_Per_Unit.." value="@Model.Quantity_Per_Unit">
+        <h3><label for="name ">Quantity_Per_Unit</label></h3>
+        <input type="text" name="Quantity_Per_Unit" placeholder="Input Quantity_Per_Unit.." value="@Model.Quantity_Per_Unit">
 
-       <h3><label for="name ">Unit_Price</label></h3>
-       <input type="text" name="Unit_Price" placeholder="Input Unit_Price.." value="@Model.Unit_Price">
+        <h3><label for="name ">Unit_Price</label></h3>
+        <input type="text" name="Unit_Price" placeholder="Input Unit_Price.." value="@Model.Unit_Price">
 
-       <h3><label for="name ">MSRP</label></h3>
-       <input type="text" name="MSRP" placeholder="Input MSRP.." value="@Model.MSRP">
+        <h3><label for="name ">MSRP</label></h3>
+        <input type="text" name="MSRP" placeholder="Input MSRP.." value="@Model.MSRP">
 
-       <h3><label for="name ">Availale_Size</label></h3>
-       <input type="text" name="Availale_Size" placeholder="Input Availale_Size.." value="@Model.Availale_Size">
+        <h3><label for="name ">Availale_Size</label></h3>
+        <input type="text" name="Availale_Size" placeholder="Input Availale_Size.." value="@Model.Availale_Size">
 
-       <h3><label for="name ">Available_Colors</label></h3>
-       <input type="text" name="Available_Colors" placeholder="Input Available_Colors.." value="@Model.Available_Colors">
+        <h3><label for="name ">Available_Colors</label></h3>
+        <input type="text" name="Available_Colors" placeholder="Input Available_Colors.." value="@Model.Available_Colors">
 
-       <h3><label for="name ">Size</label></h3>
-       <input type="text" name="Size" placeholder="Input Size.." value="@Model.Size">
+        <h3><label for="name ">Size</label></h3>
+        <input type="text" name="Size" placeholder="Input Size.." value="@Model.Size">
 
-       <h3><label for="name ">Colors</label></h3>
-       <input type="text" name="Colors" placeholder="Input Colors.." value="@Model.Colors">
+        <h3><label for="name ">Colors</label></h3>
+        <input type="text" name="Colors" placeholder="Input Colors.." value="@Model.Colors">
 
-       <h3><label for="name ">Discount</label></h3>
-       <input type="text" name="Discount" placeholder="Input Discount.." value="@Model.Discount">
+        <h3><label for="name ">Discount</label></h3>
+        <input type="text" name="Discount" placeholder="Input Discount.." value="@Model.Discount">
 
-       <h3><label for="name ">Unit_Weight</label></h3>
-       <input type="text" name="Unit_Weight" placeholder="Input Unit_Weight.." value="@Model.Unit_Weight">
+        <h3><label for="name ">Unit_Weight</label></h3>
+        <input type="text" name="Unit_Weight" placeholder="Input Unit_Weight.." value="@Model.Unit_Weight">
 
-       <h3><label for="name ">Units_in_Stock</label></h3>
-       <input type="text" name="Units_in_Stock" placeholder="Input Units_in_Stock.." value="@Model.Units_in_Stock">
+        <h3><label for="name ">Units_in_Stock</label></h3>
+        input type="text" name="Units_in_Stock" placeholder="Input Units_in_Stock.." value="@Model.Units_in_Stock">
 
-       <h3><label for="name ">Units_On_Order</label></h3>
-       <input type="text" name="Units_On_Order" placeholder="Input Units_On_Order.." value="@Model.Units_On_Order">
+        <h3><label for="name ">Units_On_Order</label></h3>
+        <input type="text" name="Units_On_Order" placeholder="Input Units_On_Order.." value="@Model.Units_On_Order">
 
-       <h3><label for="name ">Reorder_Level</label></h3>
-       <input type="text" name="Reorder_Level" placeholder="Input Reorder_Level.." value="@Model.Reorder_Level">
+        <h3><label for="name ">Reorder_Level</label></h3>
+        <input type="text" name="Reorder_Level" placeholder="Input Reorder_Level.." value="@Model.Reorder_Level">
 
-       <h3><label for="name ">Product_Available</label></h3>
-       <input type="text" name="Product_Available" placeholder="Input Product_Available.." value="@Model.Product_Available">
+        <h3><label for="name ">Product_Available</label></h3>
+        <input type="text" name="Product_Available" placeholder="Input Product_Available.." value="@Model.Product_Available">
 
-       <h3><label for="name ">Discount_Available</label></h3>
-       <input type="text" name="Discount_Available" placeholder="Input Discount_Available.." value="@Model.Discount_Available">
+        <h3><label for="name ">Discount_Available</label></h3>
+        <input type="text" name="Discount_Available" placeholder="Input Discount_Available.." value="@Model.Discount_Available">
 
-       <h3><label for="name ">Current_Order</label></h3>
-       <input type="text" name="Current_Order" placeholder="Input Current_Order.." value="@Model.Current_Order">
+        <h3><label for="name ">Current_Order</label></h3>
+        <input type="text" name="Current_Order" placeholder="Input Current_Order.." value="@Model.Current_Order">
 
-       <h3><label for="name ">Picture</label></h3>
-       <input type="text" name="Picture" placeholder="Input Picture.." value="@Model.Picture">
+        <h3><label for="name ">Picture</label></h3>
+        <input type="text" name="Picture" placeholder="Input Picture.." value="@Model.Picture">
 
-       <h3><label for="name ">Ranking</label></h3>
-       <input type="text" name="Ranking" placeholder="Input Ranking.." value="@Model.Ranking">
+        <h3><label for="name ">Ranking</label></h3>
+        <input type="text" name="Ranking" placeholder="Input Ranking.." value="@Model.Ranking">
 
-       <h3><label for="name ">Note</label></h3>
-       <input type="text" name="Note" placeholder="Input Note.." value="@Model.Note">
+        <h3><label for="name ">Note</label></h3>
+        <input type="text" name="Note" placeholder="Input Note.." value="@Model.Note">
 
 
-    </div>
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-  </form>
+      </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
   
 
-  </body>
-</html>
+  
 
 
 

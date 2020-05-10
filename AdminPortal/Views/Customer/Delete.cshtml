@@ -1,9 +1,6 @@
 
 @model AdminPortal.Models.CustomerModel;
 
-<body>
-<html>
-
 <head>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -157,9 +154,9 @@ hr {
   
   <form action="/Customer/Delete" method="post">
     <div class="form-group">
-      <input name="Id" value="@Model.Id" hidden>
+      <input name="Id" value="@Model.Customer_Id" hidden>
       <h3><label for="name ">Name</label></h3>
-       <input type="text" name="name" placeholder="Input Name.." value="@Model.Customer_name">
+       <input type="text" name="name" placeholder="Input Name.." value="@Model.First_Name">
     </div>
 
     <div class="container">
@@ -184,8 +181,5 @@ window.onclick = function(event) {
   }
 }
 </script>
-
-  </body>
-</html>
 
   

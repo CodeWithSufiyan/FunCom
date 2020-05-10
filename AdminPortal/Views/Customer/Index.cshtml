@@ -70,29 +70,81 @@
       <table style="width:100%">
           <tbody>
               <tr>
-                  <th>Customer_name</th>
-                  <th>Date-of-birth</th>
-                  <th>Age</th>
-                <th>Gender</th>
-                <th>Address</th>
-                  <th>Actions</th>
+                <th>Customer_Id</th>
+                <th>First_Name</th>
+                <th>Last_Name</th>
+                <th>Class</th>
+                <th>Room</th>
+                <th>Building</th>
+                <th>Address1</th>
+                <th>Address2</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Postal_Code</th>
+                <th>Country</th>
+                <th>Phone_Number</th>
+                <th>Email</th>
+                <th>Voice_Mail</th>
+                <th>Password</th>
+                <th>Credit_Card</th>
+                <th>Credit_Card_Type_Id</th>
+                <th>Card_Exp_Month</th>
+                <th>Card_Exp_Year</th>
+                <th>Billing_Address</th>
+                <th>Billing_City</th>
+                <th>Billing_Region</th>
+                <th>Billing_PostalCode</th>
+                <th>Billing_Country</th>
+                <th>Shipping_Address</th>
+                <th>Shipping_City</th>
+                <th>Shipping_Region</th>
+                <th>Shipping_PostalCode</th>
+                <th>Shipping_Country</th>
+                <th>Date_Entered</th>
+                <th>Actions</th>
               </tr>
               @foreach (var p in Model)
               {
-                  <tr>
-                      <td>@p.Customer_name</td>
-                      <td>@p.Date_of_birth</td>
-                      <td>@p.Age</td>
-                      <td>@p.Gender</td>
-                      <td>@p.Address</td>
+              <tr>
+                    <td>@p.Customer_Id</td>
+                    <td>@p.First_Name</td>
+                    <td>@p.Last_Name</td>
+                    <td>@p.Class</td>
+                    <td>@p.Room</td>
+                    <td>@p.Building</td>
+                    <td>@p.Address1</td>
+                    <td>@p.Address2</td>
+                    <td>@p.City</td>
+                    <td>@p.State</td>
+                    <td>@p.Postal_Code</td>
+                    <td>@p.Country</td>
+                    <td>@p.Phone_Number</td>
+                    <td>@p.Email</td>
+                    <td>@p.Voice_Mail</td>
+                    <td>@p.Password</td>
+                    <td>@p.Credit_Card</td>
+                    <td>@p.Credit_Card_Type_Id</td>
+                    <td>@p.Card_Exp_Month</td>
+                    <td>@p.Card_Exp_Year</td>
+                    <td>@p.Billing_Address</td>
+                    <td>@p.Billing_City</td>
+                    <td>@p.Billing_Region</td>
+                    <td>@p.Billing_PostalCode</td>
+                    <td>@p.Billing_Country</td>
+                    <td>@p.Shipping_Address</td>
+                    <td>@p.Shipping_City</td>
+                    <td>@p.Shipping_Region</td>
+                    <td>@p.Shipping_PostalCode</td>
+                    <td>@p.Shipping_Country</td>
+                    <td>@p.Date_Entered</td>
                       
                       <td>
-                          <a href="/Customer/Edit?Id=@p.Id" class="btn btn-warning btn-lg text-white justify-content-center"><i class="fas fa-edit"></i>Edit</a>
+                          <a href="/Customer/Edit?Id=@p.Customer_Id" class="btn btn-warning btn-lg text-white justify-content-center"><i class="fas fa-edit"></i>Edit</a>
                           <small> &nbsp; | &nbsp;</small>
-                          <a href="/Customer/Delete?Id=@p.Id" class="btn btn-danger btn-lg text-white justify-content-center"><i class="fas fa-trash-alt">Delete</a>
+                          <a href="/Customer/Delete?Id=@p.Customer_Id" class="btn btn-danger btn-lg text-white justify-content-center"><i class="fas fa-trash-alt">Delete</a>
                       </td>
 
-                  </tr>
+                </tr>
               }
           </tbody>
       </table>
