@@ -31,6 +31,9 @@ namespace AdminPortal.Migrations
                     b.Property<string>("Address2")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Age")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Billing_Address")
                         .HasColumnType("nvarchar(max)");
 
@@ -40,13 +43,19 @@ namespace AdminPortal.Migrations
                     b.Property<string>("Billing_Country")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Billing_Person_Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Billing_PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Billing_Region")
+                    b.Property<string>("Billing_State")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Building")
+                    b.Property<string>("Birthday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CVV")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Card_Exp_Month")
@@ -58,16 +67,10 @@ namespace AdminPortal.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Class")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Credit_Card")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Credit_Card_Type_Id")
+                    b.Property<string>("Credit_Card_Number")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Date_Entered")
@@ -79,7 +82,13 @@ namespace AdminPortal.Migrations
                     b.Property<string>("First_Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Last_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_on_Card")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -89,9 +98,6 @@ namespace AdminPortal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Postal_Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Room")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Shipping_Address")
@@ -106,7 +112,7 @@ namespace AdminPortal.Migrations
                     b.Property<string>("Shipping_PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Shipping_Region")
+                    b.Property<string>("Shipping_State")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
@@ -231,6 +237,33 @@ namespace AdminPortal.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("AdminPortal.Models.SocialMediaModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("URL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ViewInPage")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SocialMedia");
                 });
 
             modelBuilder.Entity("AdminPortal.Models.ProductModel", b =>

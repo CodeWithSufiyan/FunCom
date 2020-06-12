@@ -15,10 +15,10 @@ namespace AdminPortal.Controllers
     {
         // DB instance
         private readonly ApplicationDbContext  _applicationDbContext;
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ProductController> _logger;
 
         public ProductController(
-            ILogger<HomeController> logger,
+            ILogger<ProductController> logger,
             ApplicationDbContext  applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;

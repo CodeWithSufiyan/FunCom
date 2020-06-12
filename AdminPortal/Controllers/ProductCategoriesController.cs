@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AdminPortal.Models;
 using AdminPortal.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;//TAG
 
 namespace AdminPortal.Controllers
 {
@@ -14,10 +15,10 @@ namespace AdminPortal.Controllers
     {
         // DB instance
         private readonly ApplicationDbContext  _applicationDbContext;
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ProductCategoriesController> _logger;
 
         public ProductCategoriesController(
-            ILogger<HomeController> logger,
+            ILogger<ProductCategoriesController> logger,
             ApplicationDbContext  applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;

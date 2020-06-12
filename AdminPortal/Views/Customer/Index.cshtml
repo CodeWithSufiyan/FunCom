@@ -12,11 +12,11 @@
         table, th, td {
             border: 2px solid DodgerBlue;
             background-color: #F0F8FF;
-            font-size: 28px;
+            font-size: 15px;
         }
 
         th, td {
-            padding: 5px;
+            padding: 3px;
         }
 
         th, td {
@@ -64,7 +64,7 @@
 <div class="row">
 
     <div class="col-md-12">
-      <h2 class="bg-light py-4 text-info"><center><i class="fa fa-leaf fa-3x"></i>Customer</center></h2>
+      <h4 class="bg-light py-4 text-info"><center><i class="fa fa-leaf"></i>Customer<i class="fa fa-leaf"></i></center></h4>
 
       <a href="/Customer/Create" class="btn btn-success btn-lg text-white justify-content-center"><i class="fas fa-plus-circle"></i>Create</a>
       <table style="width:100%">
@@ -73,9 +73,9 @@
                 <th>Id</th>
                 <th>First_Name</th>
                 <th>Last_Name</th>
-                <th>Class</th>
-                <th>Room</th>
-                <th>Building</th>
+                <th>Birthday</th>
+                <th>Age</th>
+                <th>Gender</th>
                 <th>Address1</th>
                 <th>Address2</th>
                 <th>City</th>
@@ -86,18 +86,20 @@
                 <th>Email</th>
                 <th>Voice_Mail</th>
                 <th>Password</th>
-                <th>Credit_Card</th>
-                <th>Credit_Card_Type_Id</th>
+                <th>Name_on_Card:</th>
+                <th>Credit_Card_Number:</th>
+                <th>CVV</th>
                 <th>Card_Exp_Month</th>
                 <th>Card_Exp_Year</th>
+                <th>Billing_Person_Name</th>
                 <th>Billing_Address</th>
                 <th>Billing_City</th>
-                <th>Billing_Region</th>
+                <th>Billing_State</th>
                 <th>Billing_PostalCode</th>
                 <th>Billing_Country</th>
                 <th>Shipping_Address</th>
                 <th>Shipping_City</th>
-                <th>Shipping_Region</th>
+                <th>Shipping_State</th>
                 <th>Shipping_PostalCode</th>
                 <th>Shipping_Country</th>
                 <th>Date_Entered</th>
@@ -109,9 +111,9 @@
                     <td>@p.Id</td>
                     <td>@p.First_Name</td>
                     <td>@p.Last_Name</td>
-                    <td>@p.Class</td>
-                    <td>@p.Room</td>
-                    <td>@p.Building</td>
+                    <td>@p.Birthday</td>
+                    <td>@p.Age</td>
+                    <td>@p.Gender</td>
                     <td>@p.Address1</td>
                     <td>@p.Address2</td>
                     <td>@p.City</td>
@@ -122,18 +124,20 @@
                     <td>@p.Email</td>
                     <td>@p.Voice_Mail</td>
                     <td>@p.Password</td>
-                    <td>@p.Credit_Card</td>
-                    <td>@p.Credit_Card_Type_Id</td>
+                    <td>@p.Name_on_Card</td>
+                    <td>@p.Credit_Card_Number</td>
+                    <td>@p.CVV</td>
                     <td>@p.Card_Exp_Month</td>
                     <td>@p.Card_Exp_Year</td>
+                    <td>@p.Billing_Person_Name</td>
                     <td>@p.Billing_Address</td>
                     <td>@p.Billing_City</td>
-                    <td>@p.Billing_Region</td>
+                    <td>@p.Billing_State</td>
                     <td>@p.Billing_PostalCode</td>
                     <td>@p.Billing_Country</td>
                     <td>@p.Shipping_Address</td>
                     <td>@p.Shipping_City</td>
-                    <td>@p.Shipping_Region</td>
+                    <td>@p.Shipping_State</td>
                     <td>@p.Shipping_PostalCode</td>
                     <td>@p.Shipping_Country</td>
                     <td>@p.Date_Entered</td>

@@ -75,33 +75,16 @@
     color: orange;
   }
   </style>
-@if(ViewBag.Errors!=null){
-  <span style="color:red">Error-
-      @foreach (var errorObj in ViewBag.Errors)
-      {
-        <span>@errorObj.ToString()</span>
-        <br>
-      @foreach (var errorMessage in errorObj.Value)
-      {
-        <span>@errorMessage.ToString()</span>
-      }
-      <br><hr>
-      }
-  </span>
-}
-@if(ViewBag.ExceptionErrorMessage!=null){
-  <span style="color:red">Error- @ViewBag.ExceptionErrorMessage
-  </span>
-}
+  
 <hr class="new1">
 
 <div class="container" style="color:blue">
-  <h2 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle fa-3x"></i>Add Product</center></h2>
+  <h4 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle"></i>Add Product</center></h4>
   
   <hr class="new1">
     <form action="/Product/Create" method="post">
            
-      <h3><label for="Title">CategoryID:<span style="color:red">*</span></label></h3>
+      <label for="Title">CategoryID:<span style="color:red">*</span></label>
         <a href="/ProductCategories/Create" target="_blank">Add new category</a>
           <select name="CategoryID">
             <option value="">- select category</option>
@@ -110,20 +93,25 @@
             }
           </select>
 
-<h3><label for="Title">SKU:</label></h3>
+<label for="Title">SKU:</label>
   <input type="text" id="name" name="SKU" placeholder="Stock Keeping Unit..">
-  <h3><label for="Title">IDSKU(number):</label></h3>
+
+  <label for="Title">IDSKU(number):</label>
   <input type="number" id="name" name="IDSKU" placeholder="Stock Keeping Unit ID..">
-  <h3><label for="Title">Vendor Product ID:</label></h3>
+
+<label for="Title">Vendor Product ID:</label>
   <input type="text" id="name" name="IDSKU" placeholder="">
-  <h3><label for="Title">Title:</label></h3>
+
+  <label for="Title">Title:</label>
   <input type="text" id="name" name="Product Name" placeholder="Product Name..">
-  <h3><label for="subject">Product Description:</label></h3>
-  <textarea id="subject" name="subject" placeholder="Write Details of Product.." style="height:200px"></textarea>
-  <h3><label for="Title">SupplierID(number):</label></h3>
+
+  <label for="subject">Product Description:</label>
+  <textarea id="subject" name="subject" placeholder="Write Details of Product.." style="height:100px"></textarea>
+
+  <label for="Title">SupplierID(number):</label>
   <input type="number" id="name" name="SupplierID" placeholder="">
 
-<h3><label for="Quantity">Quantity_Per_Unit:</label></h3>
+<label for="Quantity">Quantity_Per_Unit:</label>
   <select id="Quantity" name="Quantity">
     <option value="">None</option>
     <option value="1">1</option>
@@ -131,14 +119,15 @@
     <option value="3">3</option>
     <option value="4">4</option>
   </select>
-<h3><label for="Title">Unit_Price(number):</label></h3>
+
+<label for="Title">Unit_Price(number):</label>
     <input type="number" id="name" name="Unit_Price" placeholder="">
-    <h3><label for="Title">MSRP:</label></h3>
+    <label for="Title">MSRP:</label>
     <input type="number" id="name" name="MSRP" placeholder="'Manufacturer's Suggested Retail Price'">
-    <h3><label for="Size">Available Size:</label>
-</h3>
-<h3><label for="Size">Choose Size:</label></h3>
-  <h4>(ctrl+select = to select more than 1 Size)</h4>
+    <label for="Size">Available Size:</label>
+
+<label for="Size">Choose Size:</label>
+  (ctrl+select = to select more than 1 Size)
     <select id="Colours" name="Colours" multiple>
       <option value="">None</option>
       <option value="XXS=32">XXS=32</option>
@@ -152,8 +141,8 @@
     </select>
 
 
-<h3><label for="Colours">Choose a Colour:</label></h3>
-  <h4>(ctrl+select = to select more than 1 Colour)</h4>
+<label for="Colours">Choose a Colour:</label>
+  (ctrl+select = to select more than 1 Colour)
     <select id="Colours" name="Colours" multiple>
       <option value="White">White</option>
       <option value="Black">Black</option>
@@ -175,32 +164,28 @@
       <option value="Other Colours">Other Colours</option>
     </select>
 
-<h3><label for="Discount">Discount(number):</label></h3>
+<label for="Discount">Discount(number)(in %):</label>
   <input type="number" id="name" name="Discount" placeholder="">
-  <h3><label for="Unit_Weight">Unit_Weight(number):</label></h3>
+  <label for="Unit_Weight">Unit_Weight(number)(in grams):</label>
   <input type="number" id="name" name="Unit_Weight" placeholder="">
-  <h3><label for="Units_in_Stock">Units_in_Stock(number):</label></h3>
+  <label for="Units_in_Stock">Units_in_Stock(number):</label>
   <input type="number" id="name" name="Units_in_Stock" placeholder="">
-  <h3><label for="Units_On_Order">Units_On_Order(number):</label></h3>
+  <label for="Units_On_Order">Units_On_Order(number):</label>
   <input type="number" id="name" name="Units_On_Order" placeholder="">
-  <h3><label for="Reorder_Level">Reorder_Level:</label></h3>
+  <label for="Reorder_Level">Reorder_Level:</label>
   <input type="text" id="name" name="Reorder_Level" placeholder="">
-  <h3><label for="Product_Available">Product_Available:</label></h3>
+  <label for="Product_Available">Product_Available:</label>
   <input type="text" id="name" name="Product_Available" placeholder="">
-  <h3><label for="Discount_Available">Discount_Available(number):</label></h3>
+  <label for="Discount_Available">Discount_Available(number):</label>
   <input type="number" id="name" name="Discount_Available" placeholder="">
-  <h3><label for="Current Order">Current Order:</label></h3>
+  <label for="Current Order">Current Order:</label>
   <input type="text" id="name" name="Current Order" placeholder="">
 
-<div class="col-md-10">
-  <h3>Select image to upload:</h3>
-  <input type="file" name="files" multiple />
-</div>
-  <div class="col-md-10">
-  <input type="submit" value="Upload Image" name="submit">
-</div>
+Picture:
+        <input type="file" name="Picture" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
 
-<h2>Star Rating</h2>
+Star Rating:
   <span class="fa fa-star fa-3x star-rating index-1" data-index="1"></span>
   <span class="fa fa-star fa-3x star-rating index-2" data-index="2"></span>
   <span class="fa fa-star fa-3x star-rating index-3" data-index="3"></span>

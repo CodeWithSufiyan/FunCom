@@ -1,0 +1,101 @@
+@{
+    Layout = "_Layout";
+}
+
+@model IEnumerable<AdminPortal.Models.SocialMediaModel>
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+</head>
+
+<style>
+  table, th, td {
+    border: 2px solid DodgerBlue;
+    background-color: #F0F8FF;
+    font-size: 15px;
+  }
+  th, td {
+    padding: 3px;
+  }
+  th,td {
+    text-align: center;
+  }
+  .button {
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .button:after {
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+
+  .button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+</style>
+
+<div class="row">
+
+    <div class="col-md-12">
+      <h4 class="bg-light py-4 text-info"><center><i class="fas fa-users"></i>Social Media<i class="fas fa-users"></i></center></h4>
+
+      <a href="/SocialMedia/Create" class="btn btn-success btn-lg text-white justify-content-center"><i class="fas fa-plus-circle"></i>Create</a>
+        
+    
+    
+    <table style="width:100%">
+  <tbody>
+    <tr>
+      <th>Id</th>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Icon</th>
+        <th>ViewInPage</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+@foreach (var p in Model)
+{
+    <tr>
+        <td>@p.Id</td>
+        <td>@p.Name</td>
+        <td>@p.URL</td>
+        <td>@p.Icon</td>
+        <td>@p.ViewInPage</td>
+        <td>@p.Status</td>
+        <td>
+            <small> &nbsp; | &nbsp;</small>
+      <a href="/SocialMedia/Edit?Id=@p.Id" class="btn btn-warning btn-lg text-white justify-content-center"><i class="fas fa-edit"></i>Edit</a>
+      <small> &nbsp; | &nbsp;</small>
+      <a href="/SocialMedia/Delete?Id=@p.Id" class="btn btn-danger btn-lg text-white justify-content-center"><i class="fas fa-trash-alt">Delete</a>
+    
+        </td>
+    </tr>
+}
+</tbody>
+</table>

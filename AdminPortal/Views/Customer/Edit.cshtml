@@ -1,0 +1,118 @@
+@model AdminPortal.Models.CustomerModel;
+
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style> 
+      input[type=text] {
+      width: 250px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 20px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px; 
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+      }
+
+      input[type=text]:focus {
+        width: 100%;
+      }
+
+      body {font-family: Arial, Helvetica, sans-serif;}
+      * {box-sizing: border-box;}
+
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+        font-size: 20px;
+      }
+
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+        font-size: 20px;
+      }
+
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+      button {
+        font-size: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+    </style>
+</head>
+
+<div class="container">
+  <h4 class="bg-light py-4 text-info"><center><i class="fas fa-edit fa-3x"></i>Edit</center></h4>
+    <form action="/Customer/Edit" method="post">
+      <div class="form-group">
+          <!-- One "tab" for each step in the form: -->
+  <div class="tab">Customers's Name:
+    <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+    <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+  </div>
+  <div class="tab">Birthday:
+    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+    <p><input placeholder="Age" oninput="this.className = ''" name="Age"></p>
+  </div>
+  <div class="tab">Please select your gender:
+    <input class="form-check-input" type="radio" name="Gender" id="male" value="Male" checked>
+    <label class="form-check-label" for="male">Male</label>
+    <input class="form-check-input" type="radio" name="Gender" id="female" value="Female" >
+    <label class="form-check-label" for="female">Female</label>
+    <input class="form-check-input" type="radio" name="Gender" id="other" value="Other" >
+ 	  <label class="form-check-label" for="other">Other</label>
+  </div>
+  <div class="tab"><i class="fa fa-address-card-o"></i> Address Details:<i class="fa fa-institution"></i>
+    <p><textarea id="subject" name="Address1" placeholder="Address1.." style="height:200px"></textarea>
+    <p><textarea id="subject" name="Address2" placeholder="Address2.." style="height:200px"></textarea>
+    <p><input placeholder="City..." oninput="this.className = ''" name="City"></p>
+    <p><input placeholder="State..." oninput="this.className = ''" name="State"></p>
+    <p><input placeholder="Postal Code..." oninput="this.className = ''" name="Postal Code"></p>
+    <p><input placeholder="Country..." oninput="this.className = ''" name="Country"></p>
+  </div>
+  
+              
+  <div class="tab">Contact Info:
+    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p><p><input placeholder="Voice Mail..." oninput="this.className = ''" name="Voice Mail"></p>
+    </div>
+
+    </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    </div>
