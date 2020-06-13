@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using AdminPortal.Models;
+using Entities.DB;
 
-namespace AdminPortal.Data
+namespace Application.Data
 {
 
     public class ApplicationDbContext: DbContext {

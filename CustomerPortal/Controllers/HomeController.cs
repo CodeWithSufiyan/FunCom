@@ -5,7 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using CustomerPortal.Models;
+using Entities.DB;
+using Application.Data;
 
 namespace CustomerPortal.Controllers
 {
@@ -20,7 +21,37 @@ namespace CustomerPortal.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<ProductModel> products = new List<ProductModel>
+            {
+                new ProductModel
+                {
+                    Product_Name = "Cool Clothing with Brown Stripes",
+                    Category = new ProductCategoriesModel
+                    {
+                        Name = "Tee"
+                    },
+                    Unit_Price = 200
+                },
+                new ProductModel
+                {
+                    Product_Name = "Cool Clothing with Brown Stripes",
+                    Category = new ProductCategoriesModel
+                    {
+                        Name = "Tee"
+                    },
+                    Unit_Price = 200
+                },
+                new ProductModel
+                {
+                    Product_Name = "Cool Clothing with Brown Stripes",
+                    Category = new ProductCategoriesModel
+                    {
+                        Name = "Tee"
+                    },
+                    Unit_Price = 200
+                }
+            };
+            return View(products);
         }
 
         public IActionResult Privacy()

@@ -12,7 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Proxies;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
-using AdminPortal.Data;
+using Application.Data;
+using Entities.DB;
 
 namespace AdminPortal
 {

@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdminPortal.Models
+namespace Entities.DB
 {
     public class CustomerModel
     {
@@ -42,7 +42,5 @@ namespace AdminPortal.Models
         public string Shipping_PostalCode { get; set; }
         public string Shipping_Country { get; set; }
         public string Date_Entered { get; set; }
-
-    
     }
 }

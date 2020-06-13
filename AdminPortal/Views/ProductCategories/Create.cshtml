@@ -1,97 +1,101 @@
 
-
+@model Entities.DB.ProductCategoriesModel;
 <head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style> 
-      input[type=text] {
-        width: 250px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        font-size: 20px;
-        background-color: white;
-        background-image: url('searchicon.png');
-        background-position: 10px 10px; 
-        background-repeat: no-repeat;
-        padding: 12px 20px 12px 40px;
-        -webkit-transition: width 0.4s ease-in-out;
-        transition: width 0.4s ease-in-out;
-      }
-
-        input[type=text]:focus {
-          width: 100%;
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        input[type=text] {
+            width: 250px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 20px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
         }
 
-        body {font-family: Arial, Helvetica, sans-serif;}
-        * {box-sizing: border-box;}
+            input[type=text]:focus {
+                width: 100%;
+            }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
 
         input[type=text], select, textarea {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-          margin-top: 6px;
-          margin-bottom: 16px;
-          resize: vertical;
-          font-size: 20px;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            font-size: 20px;
         }
 
         input[type=submit] {
-          background-color: #4CAF50;
-          color: white;
-          padding: 12px 20px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
         }
 
-        input[type=submit]:hover {
-          background-color: #45a049;
-          font-size: 20px;
-        }
+            input[type=submit]:hover {
+                background-color: #45a049;
+                font-size: 20px;
+            }
 
         .container-fluid {
-          border-radius: 5px;
-          background-color: #f2f2f2;
-          padding: 20px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
         }
 
         button {
-          font-size: 20px;
-          background-color: #4CAF50;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          cursor: pointer;
-          width: 100%;
-          opacity: 0.9;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
         }
     </style>
 </head>
 
 <div class="container-fluid">
-  <h3 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle"></i>Add Product Category</center></h3>
+    <h3 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle"></i>Add Product Category</center></h3>
     <form action="/ProductCategories/Create" method="post">
-      <div class="form-group">
-        <label for="name ">Name</label>
-        <input type="text" name="name" placeholder="Input Name of Product..">
-        <br>
-        <label for="subject">Description:</label>
-        <textarea id="subject" name="Description" placeholder="Write Details of Product.." style="height:200px"></textarea>
-        <br>
-        <h3>Picture:</h3>
-        <input type="file" name="Picture" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
-        <h3>Active:</h3>
-        <input type="checkbox" id="Active" name="Active" value="Yes">
-        <label for="Active"> Yes </label><br>
-        <input type="checkbox" id="Active" name="Active" value="No">
-        <label for="Active"> No </label><br>
-    </div>
+        <div class="form-group">
+            <label for="name ">Name</label>
+            <input type="text" name="name" placeholder="Input Name of Product..">
+            <br>
+            <label for="subject">Description:</label>
+            <textarea id="subject" name="Description" placeholder="Write Details of Product.." style="height:200px"></textarea>
+            <br>
+            <h3>Picture:</h3>
+            <input type="file" name="Picture" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit">
+            <h3>Active:</h3>
+            <input type="checkbox" id="Active" name="Active" value="Yes">
+            <label for="Active"> Yes </label><br>
+            <input type="checkbox" id="Active" name="Active" value="No">
+            <label for="Active"> No </label><br>
+        </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
-  

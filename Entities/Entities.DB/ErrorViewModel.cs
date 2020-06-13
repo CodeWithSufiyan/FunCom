@@ -1,6 +1,6 @@
 using System;
 
-namespace CustomerPortal.Models
+namespace Entities.DB
 {
     public class ErrorViewModel
     {

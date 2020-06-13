@@ -1,198 +1,206 @@
+@model Entities.DB.ProductCategoriesModel;
 <!-- HTML, BODY Tag etc are already in _Layout.cshtml -->
 <link href="~/lib/fontawesome/css/all.min.css" crossorigin="anonymous">
-<style> 
-  input[type=text],input[type=number] {
-    width: 250px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 20px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 10px 10px 10px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-  }
+<style>
+    input[type=text], input[type=number] {
+        width: 250px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 20px;
+        background-color: white;
+        background-image: url('searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 10px 10px 10px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
 
-  input[type=text],input[type=number]:focus {
-    width: 100%;
-  }
+        input[type=text], input[type=number]:focus {
+            width: 100%;
+        }
 
-  body {font-family: Arial, Helvetica, sans-serif;}
-  * {box-sizing: border-box;}
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-  input[type=text],input[type=number], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-    font-size: 20px;
-  }
+    * {
+        box-sizing: border-box;
+    }
 
-  input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 20px;
-  }
+    input[type=text], input[type=number], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+        font-size: 20px;
+    }
 
-  input[type=submit]:hover {
-    background-color: #45a049;
-    font-size: 20px;
-  }
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 20px;
+    }
 
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
+        input[type=submit]:hover {
+            background-color: #45a049;
+            font-size: 20px;
+        }
 
-  button {
-    font-size: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-  /* Red border */
-  hr.new1 {
-    border-top: 1px solid red;
-  }
-  .checked {
-    color: orange;
-  }
-  </style>
-  
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    button {
+        font-size: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+    /* Red border */
+    hr.new1 {
+        border-top: 1px solid red;
+    }
+
+    .checked {
+        color: orange;
+    }
+</style>
+
 <hr class="new1">
 
 <div class="container" style="color:blue">
-  <h4 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle"></i>Add Product</center></h4>
-  
-  <hr class="new1">
+    <h4 class="bg-light py-4 text-info"><center><i class="fas fa-plus-circle"></i>Add Product</center></h4>
+
+    <hr class="new1">
     <form action="/Product/Create" method="post">
-           
-      <label for="Title">CategoryID:<span style="color:red">*</span></label>
+
+        <label for="Title">CategoryID:<span style="color:red">*</span></label>
         <a href="/ProductCategories/Create" target="_blank">Add new category</a>
-          <select name="CategoryID">
+        <select name="CategoryID">
             <option value="">- select category</option>
-            @foreach(var prodcat in ViewBag.uiProdCatgList){
-            <option value="@prodcat.Id">@prodcat.Name</option>
+            @foreach (var prodcat in ViewBag.uiProdCatgList)
+            {
+                <option value="@prodcat.Id">@prodcat.Name</option>
             }
-          </select>
+        </select>
 
-<label for="Title">SKU:</label>
-  <input type="text" id="name" name="SKU" placeholder="Stock Keeping Unit..">
+        <label for="Title">SKU:</label>
+        <input type="text" id="name" name="SKU" placeholder="Stock Keeping Unit..">
 
-  <label for="Title">IDSKU(number):</label>
-  <input type="number" id="name" name="IDSKU" placeholder="Stock Keeping Unit ID..">
+        <label for="Title">IDSKU(number):</label>
+        <input type="number" id="name" name="IDSKU" placeholder="Stock Keeping Unit ID..">
 
-<label for="Title">Vendor Product ID:</label>
-  <input type="text" id="name" name="IDSKU" placeholder="">
+        <label for="Title">Vendor Product ID:</label>
+        <input type="text" id="name" name="IDSKU" placeholder="">
 
-  <label for="Title">Title:</label>
-  <input type="text" id="name" name="Product Name" placeholder="Product Name..">
+        <label for="Title">Title:</label>
+        <input type="text" id="name" name="Product Name" placeholder="Product Name..">
 
-  <label for="subject">Product Description:</label>
-  <textarea id="subject" name="subject" placeholder="Write Details of Product.." style="height:100px"></textarea>
+        <label for="subject">Product Description:</label>
+        <textarea id="subject" name="subject" placeholder="Write Details of Product.." style="height:100px"></textarea>
 
-  <label for="Title">SupplierID(number):</label>
-  <input type="number" id="name" name="SupplierID" placeholder="">
+        <label for="Title">SupplierID(number):</label>
+        <input type="number" id="name" name="SupplierID" placeholder="">
 
-<label for="Quantity">Quantity_Per_Unit:</label>
-  <select id="Quantity" name="Quantity">
-    <option value="">None</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
+        <label for="Quantity">Quantity_Per_Unit:</label>
+        <select id="Quantity" name="Quantity">
+            <option value="">None</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
 
-<label for="Title">Unit_Price(number):</label>
-    <input type="number" id="name" name="Unit_Price" placeholder="">
-    <label for="Title">MSRP:</label>
-    <input type="number" id="name" name="MSRP" placeholder="'Manufacturer's Suggested Retail Price'">
-    <label for="Size">Available Size:</label>
+        <label for="Title">Unit_Price(number):</label>
+        <input type="number" id="name" name="Unit_Price" placeholder="">
+        <label for="Title">MSRP:</label>
+        <input type="number" id="name" name="MSRP" placeholder="'Manufacturer's Suggested Retail Price'">
+        <label for="Size">Available Size:</label>
 
-<label for="Size">Choose Size:</label>
-  (ctrl+select = to select more than 1 Size)
-    <select id="Colours" name="Colours" multiple>
-      <option value="">None</option>
-      <option value="XXS=32">XXS=32</option>
-      <option value="XS=34">XS=34</option>
-      <option value="S=36">S=36</option>
-      <option value="M=38">M=38</option>
-      <option value="L=40">L=40</option>
-      <option value="XL=42">XL=42</option>
-      <option value="XXL=44">XXL=44</option>
-      <option value="XXXL=46">XXXL=46</option>
-    </select>
+        <label for="Size">Choose Size:</label>
+        (ctrl+select = to select more than 1 Size)
+        <select id="Colours" name="Colours" multiple>
+            <option value="">None</option>
+            <option value="XXS=32">XXS=32</option>
+            <option value="XS=34">XS=34</option>
+            <option value="S=36">S=36</option>
+            <option value="M=38">M=38</option>
+            <option value="L=40">L=40</option>
+            <option value="XL=42">XL=42</option>
+            <option value="XXL=44">XXL=44</option>
+            <option value="XXXL=46">XXXL=46</option>
+        </select>
 
 
-<label for="Colours">Choose a Colour:</label>
-  (ctrl+select = to select more than 1 Colour)
-    <select id="Colours" name="Colours" multiple>
-      <option value="White">White</option>
-      <option value="Black">Black</option>
-      <option value="Multi-Colour">Multi-Colour</option>
-      <option value="Yellow">Yellow</option>
-      <option value="Red">Red</option>
-      <option value="Blue">Blue</option>
-      <option value="Orange">Orange</option>
-      <option value="Pink">Pink</option>
-      <option value="Green">Green</option>
-      <option value="Grey">Grey</option>
-      <option value="Brown">Brown</option>
-      <option value="Cream">Cream</option>
-      <option value="Navy Blue">Navy Blue</option>
-      <option value="Purple">Purple</option>
-      <option value="Beige">Beige</option>
-      <option value="Maroon">Maroon</option>
-      <option value="Peach">Peach</option>
-      <option value="Other Colours">Other Colours</option>
-    </select>
+        <label for="Colours">Choose a Colour:</label>
+        (ctrl+select = to select more than 1 Colour)
+        <select id="Colours" name="Colours" multiple>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Multi-Colour">Multi-Colour</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Orange">Orange</option>
+            <option value="Pink">Pink</option>
+            <option value="Green">Green</option>
+            <option value="Grey">Grey</option>
+            <option value="Brown">Brown</option>
+            <option value="Cream">Cream</option>
+            <option value="Navy Blue">Navy Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Beige">Beige</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Peach">Peach</option>
+            <option value="Other Colours">Other Colours</option>
+        </select>
 
-<label for="Discount">Discount(number)(in %):</label>
-  <input type="number" id="name" name="Discount" placeholder="">
-  <label for="Unit_Weight">Unit_Weight(number)(in grams):</label>
-  <input type="number" id="name" name="Unit_Weight" placeholder="">
-  <label for="Units_in_Stock">Units_in_Stock(number):</label>
-  <input type="number" id="name" name="Units_in_Stock" placeholder="">
-  <label for="Units_On_Order">Units_On_Order(number):</label>
-  <input type="number" id="name" name="Units_On_Order" placeholder="">
-  <label for="Reorder_Level">Reorder_Level:</label>
-  <input type="text" id="name" name="Reorder_Level" placeholder="">
-  <label for="Product_Available">Product_Available:</label>
-  <input type="text" id="name" name="Product_Available" placeholder="">
-  <label for="Discount_Available">Discount_Available(number):</label>
-  <input type="number" id="name" name="Discount_Available" placeholder="">
-  <label for="Current Order">Current Order:</label>
-  <input type="text" id="name" name="Current Order" placeholder="">
+        <label for="Discount">Discount(number)(in %):</label>
+        <input type="number" id="name" name="Discount" placeholder="">
+        <label for="Unit_Weight">Unit_Weight(number)(in grams):</label>
+        <input type="number" id="name" name="Unit_Weight" placeholder="">
+        <label for="Units_in_Stock">Units_in_Stock(number):</label>
+        <input type="number" id="name" name="Units_in_Stock" placeholder="">
+        <label for="Units_On_Order">Units_On_Order(number):</label>
+        <input type="number" id="name" name="Units_On_Order" placeholder="">
+        <label for="Reorder_Level">Reorder_Level:</label>
+        <input type="text" id="name" name="Reorder_Level" placeholder="">
+        <label for="Product_Available">Product_Available:</label>
+        <input type="text" id="name" name="Product_Available" placeholder="">
+        <label for="Discount_Available">Discount_Available(number):</label>
+        <input type="number" id="name" name="Discount_Available" placeholder="">
+        <label for="Current Order">Current Order:</label>
+        <input type="text" id="name" name="Current Order" placeholder="">
 
-Picture:
+        Picture:
         <input type="file" name="Picture" id="fileToUpload">
         <input type="submit" value="Upload Image" name="submit">
 
-Star Rating:
-  <span class="fa fa-star fa-3x star-rating index-1" data-index="1"></span>
-  <span class="fa fa-star fa-3x star-rating index-2" data-index="2"></span>
-  <span class="fa fa-star fa-3x star-rating index-3" data-index="3"></span>
-  <span class="fa fa-star fa-3x star-rating index-4" data-index="4"></span>
-  <span class="fa fa-star fa-3x star-rating index-5" data-index="5"></span>       
-      
-<h3><button type="submit" class="btn btn-primary">Save</button></h3>
+        Star Rating:
+        <span class="fa fa-star fa-3x star-rating index-1" data-index="1"></span>
+        <span class="fa fa-star fa-3x star-rating index-2" data-index="2"></span>
+        <span class="fa fa-star fa-3x star-rating index-3" data-index="3"></span>
+        <span class="fa fa-star fa-3x star-rating index-4" data-index="4"></span>
+        <span class="fa fa-star fa-3x star-rating index-5" data-index="5"></span>
+
+        <h3><button type="submit" class="btn btn-primary">Save</button></h3>
 
     </form>
 
@@ -200,22 +208,22 @@ Star Rating:
 </div>
 
 @section Scripts{
-  <script src="~/lib/fontawesome/js/all.min.js"></script>
-  <script>
-    $(function(){
-      $(document).on('click', '.star-rating', function(){
-        let index= $(this).data('index');
+    <script src="~/lib/fontawesome/js/all.min.js"></script>
+    <script>
+        $(function () {
+            $(document).on('click', '.star-rating', function () {
+                let index = $(this).data('index');
 
-        let lengthOfStars=$('.star-rating').length;
-        let mainLength = lengthOfStars-(lengthOfStars-index);
-        let remainingLength = lengthOfStars-mainLength;
-        for(var i=0; i<mainLength; i++){
-          $('.star-rating[data-index="'+(i+1)+'"]').addClass('checked');
-        }
-        for(var j=0; j<remainingLength; j++,i++){
-          $('.star-rating[data-index="'+(i+1)+'"]').removeClass('checked');
-        }
-      });
-    });
-  </script>
+                let lengthOfStars = $('.star-rating').length;
+                let mainLength = lengthOfStars - (lengthOfStars - index);
+                let remainingLength = lengthOfStars - mainLength;
+                for (var i = 0; i < mainLength; i++) {
+                    $('.star-rating[data-index="' + (i + 1) + '"]').addClass('checked');
+                }
+                for (var j = 0; j < remainingLength; j++ , i++) {
+                    $('.star-rating[data-index="' + (i + 1) + '"]').removeClass('checked');
+                }
+            });
+        });
+    </script>
 }

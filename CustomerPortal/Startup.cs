@@ -8,6 +8,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Proxies;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
+using Application.Data;
+using Entities.DB;
 
 namespace CustomerPortal
 {
@@ -23,7 +29,16 @@ namespace CustomerPortal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            // Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                // Package name : Microsoft.EntityFrameworkCore.Proxies
+                options.UseLazyLoadingProxies();
+                options.UseSqlServer(
+                    "Server=(localdb)\\mssqllocaldb;Database=FunCom3;Trusted_Connection=True;MultipleActiveResultSets=true"
+                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

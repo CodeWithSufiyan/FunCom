@@ -5,8 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AdminPortal.Models;
-using AdminPortal.Data;
+using Entities.DB;
+using Application.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;//TAG
 
 namespace AdminPortal.Controllers
